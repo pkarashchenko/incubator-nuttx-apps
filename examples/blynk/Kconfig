@@ -1,0 +1,27 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_BLYNK
+	tristate "Example integration with Blynk IoT cloud"
+	default n
+	depends on NETUTILS_MQTTC
+	---help---
+		Enable an example of integration with Blynk IoT cloud using MQTT-C
+
+if EXAMPLES_BLYNK
+
+config EXAMPLES_BLYNK_AUTH_TOKEN
+	string "Blynk IoT cloud authentication token"
+	default ""
+
+config EXAMPLES_BLYNK_MQTTC_TXSIZE
+	int "TX Buffer size"
+	default 1024
+
+config EXAMPLES_BLYNK_MQTTC_RXSIZE
+	int "RX Buffer size"
+	default 1024
+
+endif # EXAMPLES_BLYNK

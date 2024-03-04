@@ -1,5 +1,5 @@
 # ##############################################################################
-# apps/examples/ustream/CMakeLists.txt
+# apps/examples/blynk/CMakeLists.txt
 #
 # Licensed to the Apache Software Foundation (ASF) under one or more contributor
 # license agreements.  See the NOTICE file distributed with this work for
@@ -18,24 +18,14 @@
 #
 # ##############################################################################
 
-if(CONFIG_EXAMPLES_USTREAM)
+if(CONFIG_EXAMPLES_BLYNK)
   nuttx_add_application(
     NAME
-    client
+    blynk_mqttc
     STACKSIZE
     ${CONFIG_DEFAULT_TASK_STACKSIZE}
     MODULE
-    ${CONFIG_EXAMPLES_USTREAM}
+    ${CONFIG_EXAMPLES_BLYNK}
     SRCS
-    ustream_client.c)
-
-  nuttx_add_application(
-    NAME
-    server
-    STACKSIZE
-    ${CONFIG_DEFAULT_TASK_STACKSIZE}
-    MODULE
-    ${CONFIG_EXAMPLES_USTREAM}
-    SRCS
-    ustream_server.c)
+    blynk_mqttc.c)
 endif()

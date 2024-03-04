@@ -192,6 +192,7 @@ static int initserver(FAR const struct mqttc_cfg_s *cfg)
   if (ret < 0)
     {
       printf("ERROR! fcntl() F_GETFL failed, errno: %d\n", errno);
+      close(fd);
       return -1;
     }
 
@@ -199,6 +200,7 @@ static int initserver(FAR const struct mqttc_cfg_s *cfg)
   if (ret < 0)
     {
       printf("ERROR! fcntl() F_SETFL failed, errno: %d\n", errno);
+      close(fd);
       return -1;
     }
 
@@ -283,7 +285,7 @@ int main(int argc, FAR char *argv[])
 
   while (!mqtt_cfg.client.event_connect && --timeout > 0)
     {
-     usleep(10000);
+      usleep(10000);
     }
 
   if (timeout == 0)
